@@ -1,5 +1,63 @@
 # Getting Started with Create React App
 
+
+*   Create new react App :: __`npx create-react-app <app-name>`__
+    * It will create new react application with all the packages installed.
+*   Add Storybook to React App :: __`npx sb init`__
+    * This is will add extra package related to story book in to our react app.
+    1. pacakage.json:
+        *   This file will updates with the required installation of dependencies
+            * In devDependencies & scripts below packages will get install
+                ``` javascript
+                 "devDependencies": {
+                        "@storybook/addon-actions": "^6.1.10",
+                        "@storybook/addon-essentials": "^6.1.10",
+                        "@storybook/addon-links": "^6.1.10",
+                        "@storybook/node-logger": "^6.1.10",
+                        "@storybook/preset-create-react-app": "^3.1.5",
+                        "@storybook/react": "^6.1.10"
+                }
+                "scripts": {
+                    ----------
+                    ----------
+                    ----------
+                    "storybook": "start-storybook -p 6006 -s public",
+                    "build-storybook": "build-storybook -s public"
+                }
+                ```
+    2.  .storybook (folder):
+        *   At the top level with in the project folder `sb init` command will create this folder with two files
+        *   main.js:
+            *   Will export an object with two properties
+            ``` javascript
+            module.exports = {
+                "stories": [ // This indicated all files in the src folder  that end with the extension stories.mdx and stories.js/jsx/ts/tsx are treated as stories for our story book app.
+                    "../src/**/*.stories.mdx",
+                    "../src/**/*.stories.@(js|jsx|ts|tsx)"
+                ],
+                "addons": [
+                    "@storybook/addon-links",
+                    "@storybook/addon-essentials",
+                    "@storybook/preset-create-react-app"
+                ]
+            }
+
+            ```
+        *   preview.js:
+            * It contains configuations for our stories we write.
+    3.  src/stories (folder): It will create bolier plate code.
+        *   `assets` (folder): This will have images and other files.
+        *   `Introduction.stories.mdx`: this will be the landing page when running the story book.
+        *   Along with this it will create 3 components:
+            * Button component
+            * Header component 
+            * page component
+            It for each component it will create .js where component is defined, .css file where the style are defined & .stories.js file contains the soried corresponding to the component.
+*   Run the story book using the command __`npm run storybook`__
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
